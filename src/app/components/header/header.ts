@@ -10,8 +10,17 @@ import { UiService } from '../../services/ui';
   template: `
     <header class="site-header">
       <div class="container header-inner">
-        <a routerLink="/" class="brand" aria-label="Home">
-          <span class="brand-icon">🎬</span>
+        <a routerLink="/" class="brand" aria-label="CineTeca — Home">
+          <svg class="brand-logo" viewBox="0 0 40 40" aria-hidden="true">
+            <defs>
+              <linearGradient id="brandGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f5c518" />
+                <stop offset="1" stop-color="#ff7a00" />
+              </linearGradient>
+            </defs>
+            <rect width="40" height="40" rx="11" fill="url(#brandGrad)" />
+            <path d="M16 12 L29 20 L16 28 Z" fill="#fff" />
+          </svg>
           <span class="brand-name">Cine<strong>Teca</strong></span>
         </a>
 

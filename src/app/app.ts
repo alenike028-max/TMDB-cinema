@@ -16,8 +16,21 @@ import { UiService } from './services/ui';
     </main>
 
     <footer class="site-footer">
-      <div class="container">
-        <p>Dati e immagini forniti da
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <svg class="brand-logo" viewBox="0 0 40 40" aria-hidden="true">
+            <defs>
+              <linearGradient id="footerGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#f5c518" />
+                <stop offset="1" stop-color="#ff7a00" />
+              </linearGradient>
+            </defs>
+            <rect width="40" height="40" rx="11" fill="url(#footerGrad)" />
+            <path d="M16 12 L29 20 L16 28 Z" fill="#fff" />
+          </svg>
+          <span class="brand-name">Cine<strong>Teca</strong></span>
+        </div>
+        <p class="footer-credit">Dati e immagini forniti da
           <a href="https://www.themoviedb.org/" target="_blank" rel="noopener">The Movie Database (TMDB)</a>.
           Questo prodotto usa le API di TMDB ma non è approvato o certificato da TMDB.</p>
       </div>
