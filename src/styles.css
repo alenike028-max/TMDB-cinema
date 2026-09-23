@@ -74,6 +74,7 @@ body {
   display: flex;
   flex-direction: column;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip; /* evita lo scroll orizzontale causato dagli sfondi a tutta larghezza */
   transition: background-color .25s ease, color .25s ease;
 }
 app-root { display: flex; flex-direction: column; min-height: 100vh; }
@@ -321,15 +322,58 @@ a { color: inherit; text-decoration: none; }
 .modal-error { color: var(--danger); font-size: .88rem; margin: 8px 0 0; }
 .modal-actions { display: flex; gap: 12px; justify-content: flex-end; margin-top: 22px; flex-wrap: wrap; }
 
-/* ---------- Responsive ---------- */
+/* ---------- Responsive: tablet ---------- */
+@media (max-width: 900px) {
+  .detail-info h1, .person-info h1 { font-size: 2rem; }
+  .cast-row { grid-auto-columns: 128px; }
+}
+
+/* ---------- Responsive: mobile ---------- */
 @media (max-width: 720px) {
-  .header-inner { flex-wrap: wrap; height: auto; padding: 12px 0; gap: 12px; }
-  .search-form { order: 3; max-width: 100%; width: 100%; margin-left: 0; }
-  .brand { font-size: 1.25rem; }
+  /* Header riorganizzato su tre righe: marchio+azioni, navigazione, ricerca */
+  .header-inner { flex-wrap: wrap; height: auto; padding: 12px 0; gap: 12px 10px; }
+  .brand { order: 1; margin-right: auto; font-size: 1.25rem; }
+  .theme-btn { order: 2; }
+  .settings-btn { order: 3; }
+  .main-nav { order: 4; width: 100%; gap: 8px; }
+  .main-nav a { flex: 1; text-align: center; }
+  .search-form { order: 5; width: 100%; max-width: none; margin-left: 0; }
+
+  /* Schede di dettaglio impilate */
+  .detail-head, .person-head { flex-direction: column; gap: 22px; }
+  .detail-poster, .person-photo { width: 200px; max-width: 62%; }
+  .detail-backdrop { height: 340px; }
+  .detail-info, .person-info { min-width: 0; }
+  .detail-info h1, .person-info h1 { font-size: 1.8rem; }
+
+  /* Hero e griglia */
   .hero-banner { padding: 44px 26px; }
   .hero-banner h1 { font-size: 1.9rem; }
-  .detail-info h1, .person-info h1 { font-size: 1.8rem; }
-  .grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 14px; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; }
+
   .filmo-role { display: none; }
   .filmo-row { grid-template-columns: 52px 1fr; }
+}
+
+/* ---------- Responsive: telefoni piccoli ---------- */
+@media (max-width: 460px) {
+  .container, .main-content { padding-left: 16px; padding-right: 16px; }
+  .main-content { padding-top: 22px; }
+
+  .hero-banner { padding: 34px 22px; border-radius: var(--radius); }
+  .hero-banner h1 { font-size: 1.65rem; }
+  .hero-banner p { font-size: 1rem; }
+  .hero-banner::after { width: 150px; height: 150px; }
+
+  .section-header { align-items: stretch; }
+  .section-header h1 { font-size: 1.55rem; }
+  .genre-filter { width: 100%; justify-content: space-between; }
+  .genre-filter select { flex: 1; }
+
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .card-title { font-size: .9rem; }
+
+  .detail-info h1, .person-info h1 { font-size: 1.6rem; }
+  .cast-row { grid-auto-columns: 116px; }
+  .modal { padding: 22px; }
 }
