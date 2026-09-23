@@ -21,8 +21,8 @@ import { UiService } from './services/ui';
           <svg class="brand-logo" viewBox="0 0 40 40" aria-hidden="true">
             <defs>
               <linearGradient id="footerGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#f5c518" />
-                <stop offset="1" stop-color="#ff7a00" />
+                <stop offset="0" stop-color="#ff3b3b" />
+                <stop offset="1" stop-color="#b1060f" />
               </linearGradient>
             </defs>
             <rect width="40" height="40" rx="11" fill="url(#footerGrad)" />

@@ -21,6 +21,7 @@ export interface MediaSummary {
   release_date?: string;  // film
   first_air_date?: string; // serie
   vote_average?: number;
+  overview?: string;
   media_type?: 'movie' | 'tv' | 'person';
   profile_path?: string | null;    // persona
   known_for_department?: string;   // persona
