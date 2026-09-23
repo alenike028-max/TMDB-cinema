@@ -42,3 +42,8 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Variabili d'ambiente (contengono il token TMDB: non vanno committate)
+.env
+.env.*
+!.env.example

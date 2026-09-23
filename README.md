@@ -34,9 +34,18 @@ Come ottenerlo:
 2. Vai in **Impostazioni account → API** e richiedi l'accesso accettando i termini d'uso.
 3. Copia l'**API Read Access Token (v4)**.
 
-Al primo avvio l'app chiede di incollare il token: viene salvato **solo nel
-browser** (`localStorage`) e non viene mai condiviso. L'icona ⚙️ in alto a
-destra permette di modificarlo in seguito.
+Il token può essere fornito in due modi:
+
+1. **File `.env`** (consigliato): copia `.env.example` in `.env` e inserisci il token:
+
+   ```
+   NG_APP_TMDB_TOKEN=il_tuo_token
+   ```
+
+   Il file `.env` **non viene committato** (è escluso in `.gitignore`).
+2. **Dalla schermata dell'app**: se il file `.env` non contiene un token, al primo
+   avvio l'app mostra una finestra dove incollarlo; viene salvato **solo nel
+   browser** (`localStorage`). L'icona ⚙️ in alto a destra permette di modificarlo.
 
 ## Avvio in locale
 
