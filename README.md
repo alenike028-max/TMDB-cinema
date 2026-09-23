@@ -13,7 +13,9 @@ mondo del cinema, basata sulle API di
 - **Persone**
   - scheda con foto, dati anagrafici, biografia e **filmografia** completa
 - **Ricerca unica** che restituisce insieme film, serie e persone, divisi per categoria
-- Interfaccia responsive con tema scuro
+- **Tema chiaro/scuro** con selettore nell'header (salvato in `localStorage`, segue
+  la preferenza di sistema al primo avvio)
+- Interfaccia responsive
 
 ## Tecnologie
 

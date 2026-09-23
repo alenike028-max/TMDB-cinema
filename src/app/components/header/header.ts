@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { ThemeService } from '../../services/theme';
 import { UiService } from '../../services/ui';
 
 /** Intestazione: logo, navigazione, barra di ricerca e impostazioni. */
@@ -25,6 +26,10 @@ import { UiService } from '../../services/ui';
           <button type="submit" aria-label="Cerca">🔍</button>
         </form>
 
+        <button class="theme-btn" (click)="theme.toggle()"
+                [title]="theme.theme() === 'dark' ? 'Passa al tema chiaro' : 'Passa al tema scuro'"
+                aria-label="Cambia tema">{{ theme.theme() === 'dark' ? '☀️' : '🌙' }}</button>
+
         <button class="settings-btn" (click)="ui.openSettings()"
                 title="Impostazioni token API" aria-label="Impostazioni">⚙️</button>
       </div>
@@ -34,6 +39,7 @@ import { UiService } from '../../services/ui';
 export class Header {
   private router = inject(Router);
   protected ui = inject(UiService);
+  protected theme = inject(ThemeService);
   query = signal('');
 
   onSearch(event: Event): void {
