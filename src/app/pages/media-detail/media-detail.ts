@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, signal } from '@angular/core';
+import { Component, DestroyRef, ElementRef, ViewChild, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { RouterLink } from '@angular/router';
@@ -66,14 +66,18 @@ interface DetailVM {
         @if (d.cast.length) {
           <section class="cast-section">
             <h2>Cast principale</h2>
-            <div class="cast-row">
-              @for (p of d.cast; track p.id) {
-                <a class="cast-card" [routerLink]="['/person', p.id]">
-                  <img [src]="profile(p)" [alt]="p.name" loading="lazy" />
-                  <span class="cast-name">{{ p.name }}</span>
-                  <span class="cast-role">{{ p.character }}</span>
-                </a>
-              }
+            <div class="row-wrap">
+              <button class="row-arrow left" (click)="scrollCast(-1)" type="button" aria-label="Scorri indietro">‹</button>
+              <div class="cast-row" #castTrack>
+                @for (p of d.cast; track p.id) {
+                  <a class="cast-card" [routerLink]="['/person', p.id]">
+                    <img [src]="profile(p)" [alt]="p.name" loading="lazy" />
+                    <span class="cast-name">{{ p.name }}</span>
+                    <span class="cast-role">{{ p.character }}</span>
+                  </a>
+                }
+              </div>
+              <button class="row-arrow right" (click)="scrollCast(1)" type="button" aria-label="Scorri avanti">›</button>
             </div>
           </section>
         }
@@ -89,6 +93,14 @@ export class MediaDetail {
   vm = signal<DetailVM | null>(null);
   loading = signal(false);
   error = signal('');
+
+  @ViewChild('castTrack') castTrack?: ElementRef<HTMLDivElement>;
+
+  /** Scorre orizzontalmente la riga del cast. */
+  scrollCast(dir: number): void {
+    const el = this.castTrack?.nativeElement;
+    if (el) el.scrollBy({ left: dir * el.clientWidth * 0.85, behavior: 'smooth' });
+  }
 
   constructor() {
     if (!this.tokens.has()) return;
